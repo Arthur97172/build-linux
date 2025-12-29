@@ -1,0 +1,113 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// https://github.com/CoiaPrant233/msm8916_linux
+
+/dts-v1/;
+
+#define LIMIT_CHARGE 1
+#include "msm8916-thwc-common.dtsi"
+#include "msm8916-thwc-battery.dtsi"
+
+/ {
+	model = "4G Modem MF601SL_CT_V07";
+	compatible = "thwc,mf601sl-v7", "qcom,msm8916";
+};
+
+&leds {
+	led-wan-green {
+		color = <LED_COLOR_ID_GREEN>;
+		function = LED_FUNCTION_WAN;
+		default-state = "off";
+		gpios = <&tlmm 116 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-wan-red {
+		color = <LED_COLOR_ID_RED>;
+		function = LED_FUNCTION_WAN;
+		default-state = "off";
+		gpios = <&tlmm 115 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-battery-green {
+		color = <LED_COLOR_ID_GREEN>;
+		function = LED_FUNCTION_POWER;
+		default-state = "on";
+		linux,default-trigger = "heartbeat";
+		gpios = <&tlmm 112 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-battery-red {
+		color = <LED_COLOR_ID_RED>;
+		function = LED_FUNCTION_POWER;
+		default-state = "off";
+		linux,default-trigger = "pm8916-lbc-chgr-online";
+		gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-message-green {
+		color = <LED_COLOR_ID_GREEN>;
+		function = "message";
+		default-state = "off";
+		gpios = <&tlmm 22 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-message-red {
+		color = <LED_COLOR_ID_RED>;
+		function = "message";
+		default-state = "off";
+		gpios = <&tlmm 121 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-wifi-green {
+		color = <LED_COLOR_ID_GREEN>;
+		function = LED_FUNCTION_WLAN;
+		default-state = "off";
+		gpios = <&tlmm 120 GPIO_ACTIVE_HIGH>;
+	};
+
+	led-wifi-red {
+		color = <LED_COLOR_ID_RED>;
+		function = LED_FUNCTION_WLAN;
+		default-state = "off";
+		gpios = <&tlmm 119 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&gpio_leds_default {
+	pins = "gpio20", "gpio21", "gpio22", "gpio110", "gpio112", "gpio113",
+		"gpio114", "gpio115", "gpio116", "gpio117", "gpio118", "gpio119",
+		"gpio120", "gpio121";
+};
+
+&power_key {
+	gpios = <&tlmm 34 GPIO_ACTIVE_LOW>;
+};
+
+&button_default {
+	pins = "gpio34";
+};
+
+&sim_ctrl_default {
+	esim-sel-pins {
+		function = "gpio";
+		drive-strength = <2>;
+		pins = "gpio50", "gpio51";
+		bias-disable;
+		output-low;
+	};
+
+	sim-en-pins {
+		function = "gpio";
+		drive-strength = <2>;
+		pins = "gpio24";
+		bias-disable;
+		output-low;
+	};
+
+	sim-sel-pins {
+		function = "gpio";
+		drive-strength = <2>;
+		pins = "gpio49";
+		bias-disable;
+		output-high;
+	};
+};
