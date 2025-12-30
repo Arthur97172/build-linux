@@ -18,7 +18,7 @@
 - 内核编译：
   - 以M2板子为例
     1. 在当前用户的家目录下，建立`arm`目录，并clone本仓库到`arm`目录下。【可以是其他目录，只要在第3步中配置好交叉编译的工具链即可】
-    2. 解压要编译的Linux内核源码到`arm`目录下。【通常我使用的都是主线内核，地址：<https://www.kernel.org/>】
+    2. 解压要编译的Linux内核源码到`arm`目录下。【通常我使用的都是主线6.12内核，地址：<https://www.kernel.org/>】
     3. 修改`build-linux/env/common/build_kernel_arm`中的PATH参数，根据实际情况填写交叉编译工具路径和工具链名，如果是64位的板子，需要改`build_kernel_aarch64`。
     4. 在`arm`目录下创建M2的工作目录，比如`workspace`。
     5. 进入`workspace`目录，创建软链接到`build-linux/mk_kernel.sh`，软链接的名字是`build_kernel_m2`（也就是与env目录下的环境变量文件同名），因为`mk_kernel.sh`脚本是根据调用时的文件名来选择对应的环境变量文件，所以要以环境变量文件的名字来命名。
