@@ -4,10 +4,10 @@
 > 交叉编译工具链下载地址 https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 
 ## 目录说明：
-- boot：系统启动所需要的文件，包含内核编译配置（configs）、设备树（dts）、内核引导脚本（script）以及从原机系统中提取的启动相关文件（bsp）
-- env：编译构建时所需要的环境变量
-- u-boot：u-boot编译构建相关的配置以及生成的bin文件
-- resource：一些相关的资源文件
+- boot目录：系统启动所需要的文件，包含内核编译配置（configs）、设备树（dts）、内核引导脚本（script）以及从原机系统中提取的启动相关文件（bsp）
+- env目录：编译构建时所需要的环境变量
+- u-boot目录：u-boot编译构建相关的配置以及生成的bin文件
+- resource目录：一些相关的资源文件
 
 ## 文件说明:
 - `mk_kernel.sh` 文件是用于编译Linux内核的脚本
